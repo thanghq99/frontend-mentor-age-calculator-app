@@ -3,9 +3,9 @@ import React, { FC } from 'react';
 
 const Divider: FC<DividerComponentPropsType> = ({ form }) => {
   return (
-    <div className="relative border divide-y-2 my-12 lg:mr-3 lg:w-[500px]">
+    <div className="relative border divide-y-2 my-12 lg:mr-3 lg:w-[600px]">
       <button
-        className="absolute translate-y-1/2 translate-x-1/2 right-1/2 lg:right-3 bottom-0 p-4 bg-[#854DFF] rounded-full group hover:bg-black transition duration-200"
+        className="absolute translate-y-1/2 translate-x-1/2 right-1/2 lg:right-8 bottom-0 p-4 lg:p-5 bg-[#854DFF] rounded-full group hover:bg-black transition duration-200"
         type="submit"
       >
         <svg
@@ -13,6 +13,7 @@ const Divider: FC<DividerComponentPropsType> = ({ form }) => {
           width="24"
           height="24"
           viewBox="0 0 46 44"
+          className="lg:w-12 lg:h-12"
         >
           <g
             fill="none"

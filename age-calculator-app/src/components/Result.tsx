@@ -10,7 +10,7 @@ interface TimeItemProps {
 
 const TimeItem: FC<TimeItemProps> = ({ value = '--', label }) => {
   return (
-    <div className="font-[1000] text-5xl lg:text-7xl italic ">
+    <div className="font-[1000] text-5xl lg:text-[86px] italic ">
       <span className="text-[#854DFF]">{value}</span>{' '}
       <span className="">{label}</span>
     </div>

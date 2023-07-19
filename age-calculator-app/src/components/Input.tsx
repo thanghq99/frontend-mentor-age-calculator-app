@@ -25,8 +25,8 @@ const Input: FC<InputPropsType> = ({ register, fieldKey, error }) => {
   return (
     <div className="flex flex-col space-y-1">
       <p
-        className={`uppercase text-xs tracking-widest font-extrabold ${
-          !!error ? 'text-red-500' : 'text-gray-600'
+        className={`uppercase text-xs tracking-[0.25em] font-extrabold ${
+          !!error ? 'text-red-500' : 'text-gray-400'
         }`}
       >
         {fieldKey}

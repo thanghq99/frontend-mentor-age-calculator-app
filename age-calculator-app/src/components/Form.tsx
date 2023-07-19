@@ -12,7 +12,7 @@ const Form: FC<FormComponentPropsType> = ({ form, errorMessage }) => {
 
   return (
     <div>
-      <div className="flex space-x-4">
+      <div className="flex space-x-6">
         <Input fieldKey="day" register={register} error={errors['day']} />
         <Input fieldKey="month" register={register} error={errors['month']} />
         <Input fieldKey="year" register={register} error={errors['year']} />

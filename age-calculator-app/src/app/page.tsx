@@ -84,7 +84,7 @@ const Home: FC = () => {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-slate-600">
       <form
-        className="bg-white w-375 px-4 py-10 lg:p-10 rounded-3xl rounded-br-[100px]"
+        className="bg-white w-375 px-4 py-10 lg:p-12 rounded-3xl rounded-br-[100px]"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <Form form={form} errorMessage={errorMessage} />
