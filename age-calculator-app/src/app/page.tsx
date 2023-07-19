@@ -68,7 +68,7 @@ const Home: FC = () => {
 
     let yearDiff = today.diff(submitDate, 'year');
     let monthDiff = today.diff(submitDate, 'month') - yearDiff * 12;
-    let dayDiff: CountValue = submitDate.date() - today.date();
+    let dayDiff: CountValue = today.date() - submitDate.date();
     if (submitDate.date() > today.date()) {
       dayDiff =
         today.date() +
@@ -84,7 +84,7 @@ const Home: FC = () => {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-slate-600">
       <form
-        className="bg-white w-375 px-4 py-10 rounded-3xl rounded-br-[100px]"
+        className="bg-white w-375 px-4 py-10 lg:p-10 rounded-3xl rounded-br-[100px]"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <Form form={form} errorMessage={errorMessage} />

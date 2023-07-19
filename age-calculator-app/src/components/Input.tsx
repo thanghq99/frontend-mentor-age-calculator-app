@@ -43,7 +43,7 @@ const Input: FC<InputPropsType> = ({ register, fieldKey, error }) => {
         })}
         type="number"
         placeholder={label}
-        className={`w-[90px] py-2 px-3 text-[24px] font-[1000] focus:outline-none border rounded-lg  ${
+        className={`w-[90px] lg:w-[120px] py-2 px-3 text-[24px] font-[1000] focus:outline-none focus:border-[#854DFF] border rounded-lg  ${
           !!error ? 'border-red-500' : 'border-gray-300'
         }`}
       />
