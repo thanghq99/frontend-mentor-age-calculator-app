@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import Form from '@/components/Form';
 import { FormDataType } from '@/types/formTypes';
 import { FC } from 'react';
-// import Divider from '@/components/Divider';
+import Divider from '@/components/Divider';
 // import { Result } from 'postcss';
 
 const schema = yup
@@ -44,9 +44,9 @@ const Home: FC = () => {
   });
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-slate-600">
-      <div className="bg-white w-375 px-4 py-8 rounded-xl rounded-br-[100px]">
+      <div className="bg-white w-375 px-4 py-8 rounded-3xl rounded-br-[100px]">
         <Form form={form} />
-        {/* <Divider /> */}
+        <Divider />
         {/* <Result /> */}
       </div>
     </main>
