@@ -3,18 +3,30 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import Form from './components/Form';
+import Form from '@/components/Form';
 import { FormDataType } from '@/types/formTypes';
 import { FC } from 'react';
+// import Divider from '@/components/Divider';
+// import { Result } from 'postcss';
 
 const schema = yup
   .object({
-    date: yup.number().min(1).max(31).nullable().default(null),
-    month: yup.number().min(1).max(12).nullable().default(null),
+    day: yup
+      .number()
+      .min(1, 'Must be a valid day')
+      .max(31, 'Must be a valid day')
+      .nullable()
+      .default(null),
+    month: yup
+      .number()
+      .min(1, 'Must be a valid month')
+      .max(12, 'Must be a valid month')
+      .nullable()
+      .default(null),
     year: yup
       .number()
-      .min(1900)
-      .max(new Date().getFullYear())
+      .min(1900, 'Someone lives that long?')
+      .max(new Date().getFullYear(), 'Must be in the past')
       .nullable()
       .default(null),
   })
@@ -22,16 +34,21 @@ const schema = yup
 
 const Home: FC = () => {
   const form = useForm<FormDataType>({
+    mode: 'all',
     defaultValues: {
-      date: null,
+      day: null,
       month: null,
       year: null,
     },
     resolver: yupResolver(schema),
   });
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
-      <Form form={form} />
+    <main className="flex min-h-screen flex-col items-center justify-center bg-slate-600">
+      <div className="bg-white w-375 px-4 py-8 rounded-xl rounded-br-[100px]">
+        <Form form={form} />
+        {/* <Divider /> */}
+        {/* <Result /> */}
+      </div>
     </main>
   );
 };
