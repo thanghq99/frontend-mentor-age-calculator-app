@@ -1,7 +1,7 @@
 'use client';
 
 import { InputPropsType } from '@/types/formTypes';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 
 const Input: FC<InputPropsType> = ({ register, fieldKey, error }) => {
   const [label, setLabel] = useState('');
@@ -55,4 +55,6 @@ const Input: FC<InputPropsType> = ({ register, fieldKey, error }) => {
   );
 };
 
-export default Input;
+const MemoizedInput = memo(Input);
+
+export default MemoizedInput;

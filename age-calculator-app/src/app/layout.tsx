@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({
-  weight: '400',
+  weight: '800',
   subsets: ['latin'],
 });
 
