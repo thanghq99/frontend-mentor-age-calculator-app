@@ -20,7 +20,7 @@ export interface FormProps {
 
 export type FormDataKeys = keyof FormProps;
 
-type Step = 0 | 1 | 2 | 3;
+export type Step = 0 | 1 | 2 | 3;
 
 const steps: Step[] = [0, 1, 2, 3];
 
@@ -91,7 +91,7 @@ const Home: FC = () => {
       case 2:
         return <StepThree />;
       case 3:
-        return <StepFour />;
+        return <StepFour setStep={setStep} />;
     }
   };
 
@@ -106,7 +106,7 @@ const Home: FC = () => {
   return (
     <main className='flex min-h-screen flex-col items-center justify-center bg-light-gray'>
       <FormProvider {...form}>
-        <div className='w-[375px] flex flex-col bg-magnolia'>
+        <div className='min-h-[600px] w-[375px] flex flex-col bg-magnolia'>
           <div className='h-44 w-full bg-form-step-selector bg-no-repeat'>
             <div className='flex justify-center space-x-4 mt-8'>
               {steps.map((val, key) => (
