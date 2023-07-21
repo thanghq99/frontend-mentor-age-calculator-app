@@ -96,7 +96,8 @@ const Home: FC = () => {
   };
 
   const nextStep = () => {
-    setStep((step) => (step + 1) as Step);
+    form.trigger();
+    if (form.formState.isValid) setStep((step) => (step + 1) as Step);
   };
 
   const lastStep = () => {
