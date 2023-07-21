@@ -15,7 +15,7 @@ export interface FormProps {
   phone: string;
   plan: number;
   isYearlyBilling: boolean;
-  addOns: (number | undefined)[];
+  addOns: number[];
 }
 
 export type FormDataKeys = keyof FormProps;
@@ -40,7 +40,7 @@ const schema = yup.object().shape({
     .max(10, 'Phone length must be 10'),
   plan: yup.number().required('Plan is required'),
   isYearlyBilling: yup.boolean().required().default(false),
-  addOns: yup.array(yup.number()).default([]).optional(),
+  addOns: yup.array().of(yup.number().required()).required().default([]),
 });
 
 const FormStep: FC<FormStepProps> = ({ step, selectStep, active }) => {

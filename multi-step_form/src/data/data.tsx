@@ -14,7 +14,8 @@ export interface AddOn {
   id: number;
   name: string;
   description: string;
-  price: number;
+  monthlyPrice: number;
+  yearlyPrice: number;
 }
 
 export const plans: Plan[] = [
@@ -45,19 +46,22 @@ export const addOns: AddOn[] = [
   {
     id: 0,
     name: 'online service',
-    description: 'access to multiplayer games',
-    price: 10,
+    description: 'Access to multiplayer games',
+    monthlyPrice: 1,
+    yearlyPrice: 10,
   },
   {
     id: 1,
     name: 'larger storage',
-    description: 'access to multiplayer games',
-    price: 10,
+    description: 'Extra 1TB of cloud save',
+    monthlyPrice: 2,
+    yearlyPrice: 20,
   },
   {
     id: 2,
     name: 'customizable profile',
-    description: 'access to multiplayer games',
-    price: 10,
+    description: 'Custom theme on your profile',
+    monthlyPrice: 2,
+    yearlyPrice: 20,
   },
 ];

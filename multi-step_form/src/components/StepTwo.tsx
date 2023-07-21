@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import FormHeader from './FormHeader';
 import { Plan, plans } from '@/data/data';
 import Image from 'next/image';
@@ -7,7 +7,7 @@ import { FormProps } from '@/app/page';
 
 interface PlanCardProps {
   plan: Plan;
-  isYearlyPlan?: boolean;
+  isYearlyPlan: boolean;
   selectPlan: (planId: number) => void;
   selectedPlan: number;
 }
