@@ -9,7 +9,7 @@ const FormHeader: FC<FormHeaderProps> = ({ title, description }) => {
   return (
     <>
       <p className='mb-2 text-marine-blue text-xl font-extrabold'>{title}</p>
-      <p className='mb-2 w-4/5 text-cool-gray text-sm'>{description}</p>
+      <p className='mb-4 w-4/5 text-cool-gray text-sm'>{description}</p>
     </>
   );
 };

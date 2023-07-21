@@ -2,7 +2,7 @@
 
 import React, { FC, HTMLInputTypeAttribute, memo } from 'react';
 import { FieldError, UseFormRegister } from 'react-hook-form';
-import { FormDataKeys, FormProps } from '../page';
+import { FormDataKeys, FormProps } from '../app/page';
 
 export interface InputPropsType {
   fieldKey: FormDataKeys;
@@ -26,7 +26,7 @@ const TextInput: FC<InputPropsType> = ({
       <div className='flex justify-between'>
         <p
           className={`capitalize text-xs ${
-            !!error?.message ? 'text-red-500' : 'text-gray-400'
+            !!error?.message ? 'text-red-500' : 'text-marine-blue'
           }`}
         >
           {fieldKey}

@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 import FormHeader from './FormHeader';
 import TextInput from './TextInput';
 import { useFormContext } from 'react-hook-form';
-import { FormProps } from '../page';
+import { FormProps } from '../app/page';
 
 const StepOne: FC = () => {
   const form = useFormContext<FormProps>();
