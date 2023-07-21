@@ -8,6 +8,7 @@ import StepFour from '../components/StepFour';
 import { FormProvider, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import ResultStep from '@/components/ResultStep';
 
 export interface FormProps {
   name: string;
@@ -68,6 +69,7 @@ const FormStep: FC<FormStepProps> = ({ step, selectStep, active }) => {
 
 const Home: FC = () => {
   const [step, setStep] = useState<Step>(0);
+  const [isConfirm, setIsConfirm] = useState(false);
 
   const form = useForm<FormProps>({
     mode: 'onChange',
@@ -91,7 +93,7 @@ const Home: FC = () => {
       case 2:
         return <StepThree />;
       case 3:
-        return <StepFour setStep={setStep} />;
+        return isConfirm ? <ResultStep /> : <StepFour setStep={setStep} />;
     }
   };
 
@@ -102,6 +104,18 @@ const Home: FC = () => {
 
   const lastStep = () => {
     setStep((step) => (step - 1) as Step);
+  };
+
+  const selectStep = (step: Step) => {
+    if (!isConfirm) {
+      form.trigger();
+      if (form.formState.isValid) setStep(step);
+    }
+  };
+
+  const confirmForm = () => {
+    // i should collect the form's data and send to api in real application then get the computed data to display the result
+    setIsConfirm(true);
   };
 
   return (
@@ -115,9 +129,7 @@ const Home: FC = () => {
                   key={key}
                   step={val}
                   active={val === step}
-                  selectStep={(step: Step) => {
-                    setStep(step);
-                  }}
+                  selectStep={selectStep}
                 />
               ))}
             </div>
@@ -126,28 +138,33 @@ const Home: FC = () => {
             <div className='mx-5 px-6 py-8 bg-white rounded-xl shadow-lg'>
               {switchStep(step)}
             </div>
-            <div className='flex flex-row-reverse items-center justify-between h-20 p-5 bg-white'>
-              {step === 3 ? (
-                <button className='min-w-[115px] px-4 py-3 bg-purplish-blue text-white capitalize rounded'>
-                  confirm
-                </button>
-              ) : (
-                <button
-                  className='min-w-[115px] px-4 py-3 bg-marine-blue text-white capitalize rounded'
-                  onClick={nextStep}
-                >
-                  next step
-                </button>
-              )}
-              {step > 0 && (
-                <button
-                  className=' text-cool-gray capitalize'
-                  onClick={lastStep}
-                >
-                  go back
-                </button>
-              )}
-            </div>
+            {!isConfirm && (
+              <div className='flex flex-row-reverse items-center justify-between h-20 p-5 bg-white'>
+                {step === 3 ? (
+                  <button
+                    className='min-w-[115px] px-4 py-3 bg-purplish-blue text-white capitalize rounded'
+                    onClick={confirmForm}
+                  >
+                    confirm
+                  </button>
+                ) : (
+                  <button
+                    className='min-w-[115px] px-4 py-3 bg-marine-blue text-white capitalize rounded'
+                    onClick={nextStep}
+                  >
+                    next step
+                  </button>
+                )}
+                {step > 0 && (
+                  <button
+                    className=' text-cool-gray capitalize'
+                    onClick={lastStep}
+                  >
+                    go back
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </FormProvider>
