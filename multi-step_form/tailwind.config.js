@@ -9,6 +9,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'form-step-selector': 'url(/assets/images/bg-sidebar-mobile.svg)',
+        'form-step-selector-desktop':
+          'url(/assets/images/bg-sidebar-desktop.svg)',
       },
       colors: {
         'light-blue': 'hsl(206, 94%, 87%)',

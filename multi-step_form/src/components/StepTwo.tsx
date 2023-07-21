@@ -25,7 +25,7 @@ const PlanCard: FC<PlanCardProps> = ({
 }) => {
   return (
     <div
-      className={`flex space-x-3 p-3 border rounded-lg hover:cursor-pointer ${
+      className={`flex space-x-3 p-3 border rounded-lg hover:cursor-pointer lg:flex-col lg:w-1/3 lg:h-36 lg:justify-between ${
         selectedPlan === id
           ? 'border-marine-blue bg-alabaster'
           : 'border-gray-300 hover:bg-alabaster'
@@ -87,7 +87,7 @@ const StepTwo: FC = () => {
         title='Select your plan'
         description='You have the option of monthly or yearly billing.'
       />
-      <div className='flex flex-col space-y-4'>
+      <div className='flex flex-col space-y-4 lg:flex-row lg:space-y-0 lg:space-x-4'>
         {plans.map((plan, key) => (
           <PlanCard
             plan={plan}

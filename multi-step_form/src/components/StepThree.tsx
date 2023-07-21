@@ -19,7 +19,7 @@ const AddOnCard: FC<AddOnCardProps> = ({
 }) => {
   return (
     <div
-      className={`flex items-center space-x-3 p-3 border rounded-lg hover:cursor-pointer ${
+      className={`flex items-center space-x-3 p-3 lg:py-4 lg:px-6 border rounded-lg hover:cursor-pointer ${
         isSelected
           ? 'border-marine-blue bg-alabaster'
           : 'border-gray-300 hover:bg-alabaster'
@@ -37,10 +37,10 @@ const AddOnCard: FC<AddOnCardProps> = ({
         }}
       />
       <div>
-        <p className='text-sm capitalize'>{name}</p>
-        <p className='text-xs text-cool-gray'>{description}</p>
+        <p className='text-sm lg:text-base capitalize'>{name}</p>
+        <p className='text-xs lg:text-sm text-cool-gray'>{description}</p>
       </div>
-      <p className='flex-grow text-end text-xs text-purplish-blue'>
+      <p className='flex-grow text-end text-xs lg:text-sm text-purplish-blue'>
         +${isYearlyBilling ? yearlyPrice + '/yr' : monthlyPrice + '/mo'}
       </p>
     </div>

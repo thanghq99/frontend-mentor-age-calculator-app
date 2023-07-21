@@ -45,24 +45,50 @@ const schema = yup.object().shape({
 });
 
 const FormStep: FC<FormStepProps> = ({ step, selectStep, active }) => {
+  const stepName = () => {
+    switch (step) {
+      case 0:
+        return 'your info';
+      case 1:
+        return 'select plan';
+      case 2:
+        return 'add-ons';
+      case 3:
+        return 'summary';
+    }
+  };
   return (
-    <div
-      className={`relative p-4 border-2 rounded-full transition-all group hover:cursor-pointer ${
-        active
-          ? 'bg-light-blue border-light-blue'
-          : 'hover:bg-light-blue hover:border-light-blue'
-      }`}
-      onClick={() => selectStep(step)}
-    >
-      <p
-        className={`absolute text-lg translate-x-1/2 right-1/2 translate-y-1/2 bottom-1/2 ${
+    <div className='lg:flex lg:space-x-4 lg:px-8'>
+      <div
+        className={`relative h-10 w-10 border-2 rounded-full transition-all group hover:cursor-pointer ${
           active
-            ? 'text-marine-blue'
-            : 'text-white group-hover:text-marine-blue'
+            ? 'bg-light-blue border-light-blue'
+            : 'hover:bg-light-blue hover:border-light-blue'
         }`}
+        onClick={() => selectStep(step)}
       >
-        {step + 1}
-      </p>
+        <p
+          className={`absolute text-lg translate-x-1/2 right-1/2 translate-y-1/2 bottom-1/2 ${
+            active
+              ? 'text-marine-blue'
+              : 'text-white group-hover:text-marine-blue'
+          }`}
+        >
+          {step + 1}
+        </p>
+      </div>
+      <div className='hidden lg:block text-white'>
+        <p
+          style={{
+            fontWeight: 200,
+          }}
+        >
+          Step {step + 1}
+        </p>
+        <p className='font-[1000] uppercase tracking-widest text-[14px] leading-3'>
+          {stepName()}
+        </p>
+      </div>
     </div>
   );
 };
@@ -121,9 +147,9 @@ const Home: FC = () => {
   return (
     <main className='flex min-h-screen flex-col items-center justify-center bg-light-gray'>
       <FormProvider {...form}>
-        <div className='min-h-[600px] w-[375px] flex flex-col bg-magnolia'>
-          <div className='h-44 w-full bg-form-step-selector bg-no-repeat'>
-            <div className='flex justify-center space-x-4 mt-8'>
+        <div className='min-h-[600px] w-[375px] lg:w-[960px] lg:p-4 flex flex-col lg:flex-row bg-magnolia lg:bg-white lg:rounded-xl'>
+          <div className='h-44 lg:h-[568px] w-full lg:w-[274px] bg-form-step-selector lg:bg-form-step-selector-desktop bg-no-repeat'>
+            <div className='flex lg:flex-col justify-center space-x-4 lg:space-x-0 lg:space-y-4 mt-8 '>
               {steps.map((val, key) => (
                 <FormStep
                   key={key}
@@ -134,22 +160,22 @@ const Home: FC = () => {
               ))}
             </div>
           </div>
-          <div className='flex-grow flex flex-col justify-between space-y-8 -mt-[78px]'>
-            <div className='mx-5 px-6 py-8 bg-white rounded-xl shadow-lg'>
+          <div className='flex-grow flex flex-col justify-between space-y-8 lg:space-y-0 -mt-[78px] lg:mt-0 lg:px-16'>
+            <div className='h-full mx-5 lg:mx-0 px-6 py-8 bg-white rounded-xl shadow-lg lg:shadow-none'>
               {switchStep(step)}
             </div>
             {!isConfirm && (
               <div className='flex flex-row-reverse items-center justify-between h-20 p-5 bg-white'>
                 {step === 3 ? (
                   <button
-                    className='min-w-[115px] px-4 py-3 bg-purplish-blue text-white capitalize rounded'
+                    className='min-w-[115px] px-4 py-3 bg-purplish-blue text-white capitalize rounded lg:rounded-lg hover:bg-indigo-500'
                     onClick={confirmForm}
                   >
                     confirm
                   </button>
                 ) : (
                   <button
-                    className='min-w-[115px] px-4 py-3 bg-marine-blue text-white capitalize rounded'
+                    className='min-w-[115px] px-4 py-3 bg-marine-blue text-white capitalize rounded lg:rounded-lg hover:bg-blue-800'
                     onClick={nextStep}
                   >
                     next step
