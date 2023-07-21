@@ -4,12 +4,10 @@ import React, { FC } from 'react';
 import FormHeader from './FormHeader';
 import TextInput from './TextInput';
 import { useFormContext } from 'react-hook-form';
-import { FormProps } from '../app/page';
+import { FormProps } from '@/app/page';
 
 const StepOne: FC = () => {
   const form = useFormContext<FormProps>();
-
-  console.log('render step one');
 
   if (!form) return <p>Loading form...</p>;
   else {

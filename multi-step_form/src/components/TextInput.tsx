@@ -19,8 +19,6 @@ const TextInput: FC<InputPropsType> = ({
   error,
   type,
 }) => {
-  console.log('render input');
-  console.log(error?.message);
   return (
     <div className='flex flex-col space-y-1'>
       <div className='flex justify-between'>

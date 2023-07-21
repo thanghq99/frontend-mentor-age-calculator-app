@@ -106,7 +106,7 @@ const Home: FC = () => {
   return (
     <main className='flex min-h-screen flex-col items-center justify-center bg-light-gray'>
       <FormProvider {...form}>
-        <div className='min-h-[600px] w-[375px] flex flex-col bg-magnolia'>
+        <div className='w-[375px] flex flex-col bg-magnolia'>
           <div className='h-44 w-full bg-form-step-selector bg-no-repeat'>
             <div className='flex justify-center space-x-4 mt-8'>
               {steps.map((val, key) => (
@@ -121,8 +121,8 @@ const Home: FC = () => {
               ))}
             </div>
           </div>
-          <div className='flex-grow flex flex-col justify-between -mt-[78px]'>
-            <div className='min-h-[300px] mx-5 px-6 py-8 bg-white rounded-xl shadow-lg'>
+          <div className='flex-grow flex flex-col justify-between space-y-8 -mt-[78px]'>
+            <div className='mx-5 px-6 py-8 bg-white rounded-xl shadow-lg'>
               {switchStep(step)}
             </div>
             <div className='flex flex-row-reverse items-center justify-between h-20 p-5 bg-white'>
