@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { destinations as initData } from '@/data/data.json';
 import Image from 'next/image';
+import PageTitle from '@/components/PageTitle';
 
 const destinations = initData.map((destination, key) => {
   return { id: key, ...destination };
@@ -19,10 +20,11 @@ const Destination = () => {
     <div
       className={`min-h-screen flex flex-col items-center px-6 bg-[url('/assets/destination/background-destination-mobile.jpg')] transition-all`}
     >
-      <p className='pt-[89px] uppercase font-barlow-condensed tracking-[2.7px]'>
-        <span className='pr-[18px] font-bold opacity-25'>01</span>Pick your
-        destination
-      </p>
+      <PageTitle
+        title='Pick your
+        destination'
+        contentOrder={currentDestination.id}
+      />
       <Image
         alt='destination-image'
         src={currentDestination.images.webp}
