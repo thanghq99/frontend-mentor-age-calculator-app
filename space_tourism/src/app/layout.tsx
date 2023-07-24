@@ -1,3 +1,4 @@
+import Header from '@/components/Header';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Bellefair, Barlow, Barlow_Condensed } from 'next/font/google';
@@ -35,7 +36,12 @@ export default function RootLayout({
       <body
         className={`${bellefair.variable} ${barlow.variable} ${barlowCondensed.variable}`}
       >
-        {children}
+        <main>
+          <div className='relative text-white'>
+            <Header />
+            {children}
+          </div>
+        </main>
       </body>
     </html>
   );

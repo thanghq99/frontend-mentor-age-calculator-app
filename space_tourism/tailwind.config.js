@@ -12,6 +12,9 @@ module.exports = {
         'barlow': ['var(--next-barlow)'],
         'barlow-condensed': ['var(--next-barlow-condensed)'],
       },
+      transitionDelay: {
+        'delay-400': 'transition-delay: 400ms',
+      },
     },
   },
   plugins: [],
