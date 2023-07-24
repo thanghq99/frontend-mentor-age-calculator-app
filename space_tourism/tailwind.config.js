@@ -15,6 +15,10 @@ module.exports = {
       transitionDelay: {
         'delay-400': 'transition-delay: 400ms',
       },
+      colors: {
+        'c-black': '#0B0D17',
+        'c-blue': '#D0D6F9',
+      },
     },
   },
   plugins: [],
