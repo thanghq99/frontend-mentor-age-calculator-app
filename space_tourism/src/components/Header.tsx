@@ -5,6 +5,7 @@ import Logo from '@/public/assets/shared/logo.svg';
 import HamburgerIcon from '@/public/assets/shared/icon-hamburger.svg';
 import CloseIcon from '@/public/assets/shared/icon-close.svg';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 interface NavItem {
   title: string;
@@ -58,6 +59,10 @@ const NavItem: FC<NavItemProps> = ({ open, order, navItem }) => {
 };
 
 const Header = () => {
+  const pathname = usePathname();
+
+  console.log(pathname);
+
   const [open, setOpen] = useState(false);
 
   const toggleOpen = () => {
@@ -65,13 +70,13 @@ const Header = () => {
   };
 
   return (
-    <div className='fixed top-0 left-0 z-50 w-screen flex items-center justify-between p-6 bg-black/0'>
+    <div className='fixed top-0 left-0 z-50 w-screen flex items-center justify-between p-6 md:p-0 bg-black/0 md:justify-between'>
       <Image
         alt='logo'
         src={Logo}
         width={40}
         height={40}
-        className='rounded-full'
+        className='rounded-full md:ml-9'
       />
       {open ? (
         <Image
@@ -80,6 +85,7 @@ const Header = () => {
           width={24}
           height={21}
           onClick={toggleOpen}
+          className='md:hidden'
         />
       ) : (
         <Image
@@ -88,6 +94,7 @@ const Header = () => {
           width={24}
           height={21}
           onClick={toggleOpen}
+          className='md:hidden'
         />
       )}
       <div
@@ -97,6 +104,19 @@ const Header = () => {
       >
         {navItems.map((navItem, key) => (
           <NavItem key={key} open={open} order={key} navItem={navItem} />
+        ))}
+      </div>
+      <div className='hidden md:flex items-center flex-row px-9 h-24 bg-white/[0.04] backdrop-blur-[81.55px] tracking-[2.7px] font-barlow-condensed'>
+        {navItems.map((navItem, key) => (
+          <a key={key} href={navItem.path} className={`px-5 self-stretch`}>
+            <div
+              className={`h-full flex flex-col justify-center uppercase border-b-[3px] text-c-blue ${
+                pathname === navItem.path ? '' : 'border-transparent'
+              }`}
+            >
+              <p className=''>{navItem.title}</p>
+            </div>
+          </a>
         ))}
       </div>
     </div>
