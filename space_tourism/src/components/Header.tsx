@@ -70,13 +70,13 @@ const Header = () => {
   };
 
   return (
-    <div className='fixed top-0 left-0 z-50 w-screen flex items-center justify-between p-6 md:p-0 bg-black/0 md:justify-between'>
+    <div className='fixed top-0 lg:top-8 left-0 z-50 w-screen flex items-center justify-between p-6 md:p-0 bg-black/0 lg:justify-normal'>
       <Image
         alt='logo'
         src={Logo}
         width={40}
         height={40}
-        className='rounded-full md:ml-9'
+        className='rounded-full md:ml-9 lg:ml-14'
       />
       {open ? (
         <Image
@@ -106,15 +106,27 @@ const Header = () => {
           <NavItem key={key} open={open} order={key} navItem={navItem} />
         ))}
       </div>
-      <div className='hidden md:flex items-center flex-row px-9 h-24 bg-white/[0.04] backdrop-blur-[81.55px] tracking-[2.7px] font-barlow-condensed'>
+      <div className='hidden lg:block flex-grow relative'>
+        <div className='absolute left-10 w-full z-10 border border-b border-c-blue/25'></div>
+      </div>
+      <div className='hidden md:flex items-center flex-row px-9 lg:px-20 h-24 bg-white/[0.04] backdrop-blur-[81.55px] tracking-[2.7px] font-barlow-condensed'>
         {navItems.map((navItem, key) => (
-          <a key={key} href={navItem.path} className={`px-5 self-stretch`}>
+          <a
+            key={key}
+            href={navItem.path}
+            className={`px-5 lg:px-8 self-stretch`}
+          >
             <div
               className={`h-full flex flex-col justify-center uppercase border-b-[3px] text-c-blue ${
                 pathname === navItem.path ? '' : 'border-transparent'
               }`}
             >
-              <p className=''>{navItem.title}</p>
+              <p>
+                <span className='hidden lg:inline-block pr-3 font-bold text-base tracking-[2.7px]'>
+                  {key < 9 ? `0${key + 1}` : key + 1}
+                </span>
+                {navItem.title}
+              </p>
             </div>
           </a>
         ))}
