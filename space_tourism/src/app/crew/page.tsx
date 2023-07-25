@@ -21,7 +21,7 @@ const Crew = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col items-center px-6 bg-[url('/assets/crew/background-crew-mobile.jpg')] transition-all`}
+      className={`min-h-screen flex flex-col items-center px-6 bg-[url('/assets/crew/background-crew-mobile.jpg')] bg-no-repeat bg-[#0B0D17] transition-all`}
     >
       <PageTitle title='Meet your crew' contentOrder={currentCrew.id} />
 
@@ -49,7 +49,7 @@ const Crew = () => {
       <p className='mt-2 text-2xl uppercase font-bellefair'>
         {currentCrew.name}
       </p>
-      <p className='mt-4 text-[15px] leading-[25px] text-center'>
+      <p className='mt-4 text-[15px] leading-[25px] text-center font-barlow'>
         {currentCrew.bio}
       </p>
     </div>

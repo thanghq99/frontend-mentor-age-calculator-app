@@ -18,7 +18,7 @@ const Destination = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col items-center px-6 bg-[url('/assets/destination/background-destination-mobile.jpg')] transition-all`}
+      className={`min-h-screen flex flex-col items-center px-6 bg-[url('/assets/destination/background-destination-mobile.jpg')] bg-no-repeat bg-[#0B0D17]  transition-all`}
     >
       <PageTitle
         title='Pick your
@@ -50,7 +50,7 @@ const Destination = () => {
       <p className='text-[56px] font-bellefair uppercase pt-5'>
         {currentDestination.name}
       </p>
-      <p className='text-c-blue text-[15px] leading-[25px] text-center'>
+      <p className='text-c-blue text-[15px] leading-[25px] text-center font-barlow'>
         {currentDestination.description}
       </p>
       <div className='divide-y w-full my-8 border-b border-[#383B4B]'></div>
