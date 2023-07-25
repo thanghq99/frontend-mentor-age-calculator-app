@@ -24,13 +24,15 @@ const Crew = () => {
       className={`min-h-screen flex flex-col items-center px-6 bg-[url('/assets/crew/background-crew-mobile.jpg')] transition-all`}
     >
       <PageTitle title='Meet your crew' contentOrder={currentCrew.id} />
-      <Image
-        alt='crew-img'
-        src={currentCrew.images.webp}
-        height={222}
-        width={154}
-        className='mt-8'
-      />
+
+      <div className='relative h-56 w-44 mt-8'>
+        <Image
+          alt='crew-img'
+          src={currentCrew.images.webp}
+          fill
+          className='object-contain'
+        />
+      </div>
       <div className='divide-y w-full border-b border-[#383B4B]'></div>
       <div className='flex space-x-4 my-8'>
         {crews.map((crew, key) => (
@@ -43,11 +45,11 @@ const Crew = () => {
           ></div>
         ))}
       </div>
-      <p className='text-sm uppercase font-bellefair'>Commander </p>
-      <p className='mt-4 text-2xl uppercase font-bellefair'>
+      <p className='text-sm uppercase font-bellefair'>{currentCrew.role}</p>
+      <p className='mt-2 text-2xl uppercase font-bellefair'>
         {currentCrew.name}
       </p>
-      <p className='mt-8 text-[15px] leading-[25px] text-center'>
+      <p className='mt-4 text-[15px] leading-[25px] text-center'>
         {currentCrew.bio}
       </p>
     </div>

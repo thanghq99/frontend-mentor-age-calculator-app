@@ -65,7 +65,7 @@ const Header = () => {
   };
 
   return (
-    <div className='fixed top-0 left-0 w-screen flex items-center justify-between p-6 bg-black/0'>
+    <div className='fixed top-0 left-0 z-50 w-screen flex items-center justify-between p-6 bg-black/0'>
       <Image
         alt='logo'
         src={Logo}
