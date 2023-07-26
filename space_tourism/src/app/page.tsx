@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div className="min-h-screen lg:flex lg:justify-between px-6 lg:px-32 font-barlow bg-[url('/assets/home/background-home-mobile.jpg')] md:bg-[url('/assets/home/background-home-tablet.jpg')] lg:bg-[url('/assets/home/background-home-desktop.jpg')] bg-no-repeat bg-cover text-c-blue text-center">
+    <div className="min-h-screen lg:flex lg:justify-between pb-8 px-6 lg:px-32 font-barlow bg-[url('/assets/home/background-home-mobile.jpg')] md:bg-[url('/assets/home/background-home-tablet.jpg')] lg:bg-[url('/assets/home/background-home-desktop.jpg')] bg-no-repeat bg-cover text-c-blue text-center">
       <div className='w-full max-w-sm md: md:w-[444px] md:max-w-none mx-auto lg:mx-0 flex flex-col justify-center'>
         <p className='pt-28 uppercase font-barlow-condensed tracking-[2.7px] md:pt-48 md:text-xl lg:text-[28px] md:tracking-[3.38px] lg:tracking-[4.72px]'>
           so, you want to travel to

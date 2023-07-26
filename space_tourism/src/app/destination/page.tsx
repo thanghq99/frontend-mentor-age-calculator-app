@@ -22,7 +22,7 @@ const Destination = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col items-center px-6 md:px-9 md:pt-10 lg:px-32 lg:pt-24 bg-[url('/assets/destination/background-destination-mobile.jpg')] md:bg-[url('/assets/destination/background-destination-tablet.jpg')] bg-cover bg-no-repeat bg-[#0B0D17] transition-all`}
+      className={`min-h-screen flex flex-col items-center pb-8 px-6 md:px-9 md:pt-10 lg:px-32 lg:pt-24 bg-[url('/assets/destination/background-destination-mobile.jpg')] md:bg-[url('/assets/destination/background-destination-tablet.jpg')] bg-cover bg-no-repeat bg-[#0B0D17] transition-all`}
     >
       <PageTitle
         title='Pick your
