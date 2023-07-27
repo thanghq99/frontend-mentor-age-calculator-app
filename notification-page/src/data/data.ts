@@ -82,7 +82,7 @@ const notifications: Notification[] = [
     notificationAt: dayjs().subtract(1, 'day').toDate(),
   },
   {
-    unread: false,
+    unread: true,
     person: {
       avatar: '/assets/images/avatar-rizky-hasanuddin.webp',
       name: 'Rizky Hasanuddin',
@@ -93,7 +93,7 @@ const notifications: Notification[] = [
     notificationAt: dayjs().subtract(5, 'day').toDate(),
   },
   {
-    unread: false,
+    unread: true,
     person: {
       avatar: '/assets/images/avatar-kimberly-smith.webp',
       name: 'Kimberly Smith',
@@ -104,7 +104,7 @@ const notifications: Notification[] = [
     notificationAt: dayjs().subtract(1, 'week').toDate(),
   },
   {
-    unread: false,
+    unread: true,
     person: {
       avatar: '/assets/images/avatar-nathan-peterson.webp',
       name: 'Nathan Peterson',

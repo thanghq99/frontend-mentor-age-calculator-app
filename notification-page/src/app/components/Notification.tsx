@@ -1,3 +1,5 @@
+'use client';
+
 import {
   CommentNotification,
   FollowNotification,
@@ -38,13 +40,21 @@ const TimeFromNow = ({ notificationAt }: { notificationAt: Date }) => {
   return <p className='text-grayish-blue'>{dayjs(notificationAt).fromNow()}</p>;
 };
 
-const Notification: FC<Notification> = (props) => {
-  const renderNotificationContent = () => {
-    console.log(props.unread);
+interface NotificationProps {
+  id: number;
+  notification: Notification;
+  markAsRead: () => void;
+}
 
-    switch (props.type) {
+const Notification: FC<NotificationProps> = ({
+  id,
+  notification,
+  markAsRead,
+}) => {
+  const renderNotificationContent = () => {
+    switch (notification.type) {
       case 'react': {
-        const data = props as ReactNotification;
+        const data = notification as ReactNotification;
         return (
           <div>
             <Username name={data.person.name} /> react to your recent post{' '}
@@ -55,11 +65,12 @@ const Notification: FC<Notification> = (props) => {
         );
       }
       case 'comment': {
-        const data = props as CommentNotification;
+        const data = notification as CommentNotification;
         return (
           <div className='flex flex-row space-x-3'>
             <div>
               <Username name={data.person.name} /> send you a private message
+              <UnreadMark unread={data.unread} />
               <TimeFromNow notificationAt={data.notificationAt} />
             </div>
             {data.image && (
@@ -75,7 +86,7 @@ const Notification: FC<Notification> = (props) => {
         );
       }
       case 'follow': {
-        const data = props as FollowNotification;
+        const data = notification as FollowNotification;
         return (
           <div>
             <Username name={data.person.name} /> followed you
@@ -85,7 +96,7 @@ const Notification: FC<Notification> = (props) => {
         );
       }
       case 'group': {
-        const data = props as GroupNotification;
+        const data = notification as GroupNotification;
         return (
           <div className='flex flex-col'>
             <div>
@@ -103,12 +114,13 @@ const Notification: FC<Notification> = (props) => {
         );
       }
       case 'pm': {
-        const data = props as PmNotification;
+        const data = notification as PmNotification;
         return (
           <div>
             <Username name={data.person.name} /> send you a private message
+            <UnreadMark unread={data.unread} />
             <TimeFromNow notificationAt={data.notificationAt} />
-            <div className='mt-2 p-4 text-[15px] rounded-sm border border-grayish-blue/50'>
+            <div className='mt-2 p-4 text-[15px] rounded-sm md:rounded-md border border-grayish-blue/50 leading-[18px]'>
               <p className=''>{data.message}</p>
             </div>
           </div>
@@ -118,13 +130,14 @@ const Notification: FC<Notification> = (props) => {
   };
   return (
     <div
-      className={`p-4 flex space-x-4 rounded-lg text-dark-grayish-blue ${
-        props.unread === true ? 'bg-light-grayish-blue-1/30' : 'bg-white'
+      className={`p-4 flex space-x-4 rounded-lg text-dark-grayish-blue hover:cursor-pointer hover:bg-light-grayish-blue-1 ${
+        notification.unread === true ? 'bg-light-grayish-blue-1/30' : 'bg-white'
       }`}
+      onClick={markAsRead}
     >
       <Image
         alt='avatar'
-        src={props.person.avatar}
+        src={notification.person.avatar}
         width={44}
         height={44}
         className='object-contain object-top'
