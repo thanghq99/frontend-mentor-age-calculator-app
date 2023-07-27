@@ -1,10 +1,12 @@
-export default function Home() {
+import { ComponentProps } from '@/types/routeType';
+import { FC } from 'react';
+
+const Home: FC<ComponentProps> = () => {
   return (
     <main>
-      <form action=''>
-        <input type='text' name='test' />
-        <button type='submit'>submit</button>
-      </form>
+      <div className='text-sm'>Homepage</div>
     </main>
   );
-}
+};
+
+export default Home;
