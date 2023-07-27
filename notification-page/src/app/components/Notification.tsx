@@ -67,7 +67,7 @@ const Notification: FC<NotificationProps> = ({
       case 'comment': {
         const data = notification as CommentNotification;
         return (
-          <div className='flex flex-row space-x-3'>
+          <div className='w-full flex flex-row justify-between space-x-3'>
             <div>
               <Username name={data.person.name} /> send you a private message
               <UnreadMark unread={data.unread} />
