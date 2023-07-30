@@ -1,11 +1,17 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Nunito_Sans } from 'next/font/google';
+// import { Nunito_Sans } from 'next/font/google';
+import localFont from 'next/font/local';
+import themeScript from '@public/theme';
 
-const font = Nunito_Sans({
-  subsets: ['latin'],
-  weight: ['200', '300', '400', '500', '600', '700', '800', '900', '1000'],
+const font = localFont({
+  src: 'nunito_sans.ttf',
 });
+// ({
+//   subsets: ['latin'],
+//   weight: ['200', '300', '400', '500', '600', '700', '800', '900', '1000'],
+//   preload: false,
+// });
 
 export const metadata: Metadata = {
   title: 'REST Country',
@@ -18,8 +24,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <body className={font.className}>{children}</body>
+    <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: themeScript,
+          }}
+        ></script>
+      </head>
+      <body className={font.className}>
+        <main className="flex flex-col items-center justify-center min-h-screen bg-slate-400 dark:bg-slate-600 transition-all duration-[350ms] ease-in-out">
+          <div className="min-w-[375px] w-[375px] bg-l-bg text-l-text dark:bg-d-bg dark:text-d-text">
+            {children}
+          </div>
+        </main>
+      </body>
     </html>
   );
 }

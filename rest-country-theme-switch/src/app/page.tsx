@@ -1,11 +1,12 @@
+import Header from '@/components/Header';
 import { ComponentProps } from '@/types/routeType';
 import { FC } from 'react';
 
 const Home: FC<ComponentProps> = () => {
   return (
-    <main>
-      <div className='text-sm'>Homepage</div>
-    </main>
+    <div className="flex flex-col">
+      <Header />
+    </div>
   );
 };
 
