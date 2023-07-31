@@ -1,14 +1,16 @@
-import FilterBar from '@/components/FilterBar';
-import SearchBar from '@/components/SearchBar';
 import { ComponentProps } from '@/types/routeType';
 import { FC } from 'react';
 import countries from '@/data/data.json';
 import CountryCard from '@/components/CountryCard';
+import SearchBar from '@/components/SearchBar';
+import FilterBar from '@/components/FilterBar';
 
 export type Country = (typeof countries)[number];
 
 const Home: FC<ComponentProps> = ({ searchParams }) => {
-  const filteredCountries = () => {
+  const filteredCountries = (searchParams: {
+    [key: string]: string | string[] | undefined;
+  }) => {
     let data = countries;
     let searchName =
       searchParams.searchName && typeof searchParams.searchName === 'string'
@@ -27,7 +29,7 @@ const Home: FC<ComponentProps> = ({ searchParams }) => {
   };
 
   const renderCountryCards = () => {
-    const countries = filteredCountries();
+    const countries = filteredCountries(searchParams);
     if (!countries.length)
       return <p className='text-xl font-semibold'>No country found.</p>;
     return countries.map((country, key) => (
@@ -37,8 +39,10 @@ const Home: FC<ComponentProps> = ({ searchParams }) => {
 
   return (
     <div className='flex-grow flex flex-col space-y-8 my-6 px-4'>
-      <SearchBar />
-      <FilterBar />
+      <div className='flex flex-col space-y-8 lg:flex-row lg:space-y-0 lg:justify-between'>
+        <SearchBar />
+        <FilterBar />
+      </div>
       {renderCountryCards()}
     </div>
   );

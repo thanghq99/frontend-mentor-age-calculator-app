@@ -6,7 +6,9 @@ import React, { useState } from 'react';
 const SearchBar = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [name, setName] = useState('');
+  const [name, setName] = useState(() => {
+    return searchParams.get('searchName') || '';
+  });
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -22,7 +24,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className='flex flex-row items-center w-full py-4 bg-l-element dark:bg-d-element rounded-md shadow-md'>
+    <div className='flex flex-row items-center w-full lg:w-1/4 py-4 bg-l-element dark:bg-d-element rounded-md shadow-md'>
       <svg
         xmlns='http://www.w3.org/2000/svg'
         fill='none'
@@ -40,6 +42,7 @@ const SearchBar = () => {
       <input
         type='text'
         placeholder='Search for a country...'
+        value={name}
         onChange={onChange}
         onKeyDown={onEnter}
         className='bg-l-element dark:bg-d-element focus:outline-none'

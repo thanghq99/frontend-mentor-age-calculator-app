@@ -17,7 +17,9 @@ export type Region = (typeof regions)[number];
 const FilterBar = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [selectedRegion, setSelectedRegion] = useState<Region>(regions[0]);
+  const [selectedRegion, setSelectedRegion] = useState<Region>(() => {
+    return (searchParams.get('region') as Region) || regions[0];
+  });
 
   const selectRegion = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedRegion(event.target.value as Region);
@@ -25,6 +27,7 @@ const FilterBar = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams.toString());
+    console.log(searchParams.toString());
     params.set('region', selectedRegion);
 
     router.replace('/?' + params.toString());
