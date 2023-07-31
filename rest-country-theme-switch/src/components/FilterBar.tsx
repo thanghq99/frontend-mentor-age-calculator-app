@@ -1,17 +1,34 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
-const regions = ['', 'Africa', 'America', 'Asia', 'Europe', 'Oceania'] as const;
+const regions = [
+  '',
+  'Africa',
+  'Americas',
+  'Asia',
+  'Europe',
+  'Oceania',
+] as const;
 
 export type Region = (typeof regions)[number];
 
 const FilterBar = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [selectedRegion, setSelectedRegion] = useState<Region>(regions[0]);
 
   const selectRegion = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedRegion(event.target.value as Region);
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('region', selectedRegion);
+
+    router.replace('/?' + params.toString());
+  }, [selectRegion]);
 
   return (
     <div className='relative w-1/2 lg:w-1/4'>

@@ -1,6 +1,26 @@
-import React from 'react';
+'use client';
+
+import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useState } from 'react';
 
 const SearchBar = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [name, setName] = useState('');
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
+  };
+
+  const onEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.code === 'Enter') {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set('searchName', name);
+
+      router.replace('/?' + params.toString());
+    }
+  };
+
   return (
     <div className='flex flex-row items-center w-full py-4 bg-l-element dark:bg-d-element rounded-md shadow-md'>
       <svg
@@ -20,6 +40,8 @@ const SearchBar = () => {
       <input
         type='text'
         placeholder='Search for a country...'
+        onChange={onChange}
+        onKeyDown={onEnter}
         className='bg-l-element dark:bg-d-element focus:outline-none'
       />
     </div>

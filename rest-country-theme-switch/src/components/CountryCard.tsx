@@ -5,6 +5,7 @@ import React, { FC } from 'react';
 const CountryCard: FC<{ country: Country }> = ({ country }) => {
   return (
     <Link
+      scroll={true}
       href={`/details/${country.alpha3Code}`}
       className='flex flex-col mx-8 bg-l-element dark:bg-d-element rounded-md shadow-md'
     >
