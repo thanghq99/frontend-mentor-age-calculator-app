@@ -7,12 +7,13 @@ const CountryCard: FC<{ country: Country }> = ({ country }) => {
     <Link
       scroll={true}
       href={`/details/${country.alpha3Code}`}
-      className='flex flex-col mx-8 bg-l-element dark:bg-d-element rounded-md shadow-md'
+      className='flex flex-col lg:flex-grow lg:shrink-0 lg:basis-[calc(25%-64px)] bg-l-element dark:bg-d-element rounded-md shadow-md '
     >
+      {/* respect flag origin size and ratio */}
       <img
         src={country.flag}
         alt={`${country.name}-flag`}
-        className='w-full h-auto'
+        className='w-full h-auto lg:w-auto lg:h-1/2 object-center'
       />
       <div className='p-6'>
         <p className='font-extrabold text-lg mb-6'>{country.name}</p>

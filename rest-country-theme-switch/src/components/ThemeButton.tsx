@@ -22,7 +22,7 @@ const ThemeButton = () => {
   };
 
   return (
-    <div className='flex space-x-2 font-semibold'>
+    <div className='flex items-center space-x-2 font-semibold'>
       {theme === 'light' ? (
         <svg
           key='light-icon'

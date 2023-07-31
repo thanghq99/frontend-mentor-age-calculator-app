@@ -38,12 +38,14 @@ const Home: FC<ComponentProps> = ({ searchParams }) => {
   };
 
   return (
-    <div className='flex-grow flex flex-col space-y-8 my-6 px-4'>
+    <div className='flex-grow flex flex-col space-y-8 my-6 px-4 md:px-12 lg:px-24'>
       <div className='flex flex-col space-y-8 lg:flex-row lg:space-y-0 lg:justify-between'>
         <SearchBar />
         <FilterBar />
       </div>
-      {renderCountryCards()}
+      <div className='mx-8 lg:mx-0 flex flex-col space-y-8 lg:flex-row lg:space-y-0 lg:flex-wrap lg:gap-20'>
+        {renderCountryCards()}
+      </div>
     </div>
   );
 };

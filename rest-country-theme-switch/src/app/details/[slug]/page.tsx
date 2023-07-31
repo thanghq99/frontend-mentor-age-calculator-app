@@ -14,7 +14,7 @@ const DetailPage: FC<ComponentProps> = ({ params: { slug } }) => {
   if (!country) notFound();
 
   return (
-    <div className='flex-grow flex flex-col space-y-10 my-8 px-8 text-base'>
+    <div className='flex-grow flex flex-col space-y-10 my-8 px-8 lg:my-24 md:px-12 lg:px-24 text-base lg:text-lg'>
       <div className='self-start'>
         {/* not sure go back to main page or main page/last country */}
         <Link
@@ -38,63 +38,73 @@ const DetailPage: FC<ComponentProps> = ({ params: { slug } }) => {
           Back
         </Link>
       </div>
-      <img
-        src={country.flag}
-        alt={`${country.name}-flag`}
-        className='w-full h-auto'
-      />
-      <div className='flex flex-col space-y-4'>
-        <p className='font-extrabold text-xl'>{country.name}</p>
-        <div className='flex flex-col space-y-8'>
-          <div className='flex flex-col space-y-1'>
-            <p>
-              <span className='font-semibold'>Population: </span>
-              {country.population.toLocaleString()}
+      <div className='flex flex-col lg:flex-row space-y-10 lg:justify-between'>
+        <img
+          src={country.flag}
+          alt={`${country.name}-flag`}
+          className='w-full h-auto lg:w-2/5'
+        />
+        <div className='flex flex-col space-y-8 lg:space-y-8 lg:w-1/2'>
+          <div className='flex flex-col space-y-6'>
+            <p className='font-extrabold text-xl lg:text-2xl lg:w-full'>
+              {country.name}
             </p>
-            <p>
-              <span className='font-semibold'>Region: </span>
-              {country.region}
-            </p>
-            <p>
-              <span className='font-semibold'>Capital: </span>
-              {country.capital}
-            </p>
+            <div className='flex flex-col lg:flex-row space-y-4 lg:space-y-0 justify-between'>
+              <div className='flex flex-col space-y-1'>
+                <p>
+                  <span className='font-semibold'>Population: </span>
+                  {country.population.toLocaleString()}
+                </p>
+                <p>
+                  <span className='font-semibold'>Region: </span>
+                  {country.region}
+                </p>
+                <p>
+                  <span className='font-semibold'>Capital: </span>
+                  {country.capital}
+                </p>
+              </div>
+              <div className='flex flex-col space-y-1'>
+                <p>
+                  <span className='font-semibold'>Top level domain: </span>
+                  {country.topLevelDomain}
+                </p>
+                <p>
+                  <span className='font-semibold'>Currencies: </span>
+                  {country.currencies
+                    ? country.currencies
+                        .map((currency) => currency.code)
+                        .join(', ')
+                    : 'No data'}
+                </p>
+                <p>
+                  <span className='font-semibold'>Languages: </span>
+                  {country.languages
+                    .map((language) => language.name)
+                    .join(', ')}
+                </p>
+              </div>
+            </div>
           </div>
-          <div className='flex flex-col space-y-1'>
-            <p>
-              <span className='font-semibold'>Top level domain: </span>
-              {country.topLevelDomain}
-            </p>
-            <p>
-              <span className='font-semibold'>Currencies: </span>
-              {country.currencies
-                ? country.currencies.map((currency) => currency.code).join(', ')
-                : 'No data'}
-            </p>
-            <p>
-              <span className='font-semibold'>Languages: </span>
-              {country.languages.map((language) => language.name).join(', ')}
-            </p>
+          <div>
+            <p className='font-bold text-lg lg:text-xl'>Border country:</p>
+            <div className='mt-2 flex flex-wrap gap-2'>
+              {country.borders
+                ? country.borders.map((border) => (
+                    <Link
+                      href={`/details/${border}`}
+                      className='px-4 py-2 bg-l-element dark:bg-d-element'
+                    >
+                      {
+                        borderCountries.find(
+                          (boderCountry) => boderCountry.alpha3Code === border
+                        )?.name
+                      }
+                    </Link>
+                  ))
+                : 'No border data'}
+            </div>
           </div>
-        </div>
-      </div>
-      <div>
-        <p className='font-bold text-lg'>Border country:</p>
-        <div className='mt-2 flex flex-wrap gap-2'>
-          {country.borders
-            ? country.borders.map((border) => (
-                <Link
-                  href={`/details/${border}`}
-                  className='px-4 py-2 bg-l-element dark:bg-d-element'
-                >
-                  {
-                    borderCountries.find(
-                      (boderCountry) => boderCountry.alpha3Code === border
-                    )?.name
-                  }
-                </Link>
-              ))
-            : 'No border data'}
         </div>
       </div>
     </div>
