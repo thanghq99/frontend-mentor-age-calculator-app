@@ -9,7 +9,7 @@ export type Country = (typeof countries)[number];
 
 const Home: FC<ComponentProps> = () => {
   return (
-    <div className='flex flex-col space-y-8 my-6 px-4'>
+    <div className='flex-grow flex flex-col space-y-8 my-6 px-4'>
       <SearchBar />
       <FilterBar />
       {countries.map((country, key) => (

@@ -35,7 +35,7 @@ export default function RootLayout({
       </head>
       <body className={font.className}>
         <main className='flex flex-col items-center justify-center min-h-screen bg-slate-400 dark:bg-slate-600 transition-all duration-[350ms] ease-in-out'>
-          <div className='w-screen mih-screen bg-l-bg text-l-text dark:bg-d-bg dark:text-d-text'>
+          <div className='w-screen min-h-screen flex flex-col bg-l-bg text-l-text dark:bg-d-bg dark:text-d-text'>
             <Header />
             {children}
           </div>

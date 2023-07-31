@@ -1,9 +1,13 @@
 import { Country } from '@/app/page';
+import Link from 'next/link';
 import React, { FC } from 'react';
 
 const CountryCard: FC<{ country: Country }> = ({ country }) => {
   return (
-    <div className='flex flex-col mx-8 bg-l-element dark:bg-d-element rounded-md shadow-md'>
+    <Link
+      href={`/details/${country.alpha3Code}`}
+      className='flex flex-col mx-8 bg-l-element dark:bg-d-element rounded-md shadow-md'
+    >
       <img
         src={country.flag}
         alt={`${country.name}-flag`}
@@ -26,7 +30,7 @@ const CountryCard: FC<{ country: Country }> = ({ country }) => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
