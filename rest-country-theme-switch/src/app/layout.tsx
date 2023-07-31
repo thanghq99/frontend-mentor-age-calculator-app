@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 // import { Nunito_Sans } from 'next/font/google';
 import localFont from 'next/font/local';
 import themeScript from '@public/theme';
+import Header from '@/components/Header';
 
 const font = localFont({
   src: 'nunito_sans.ttf',
@@ -24,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -33,8 +34,9 @@ export default function RootLayout({
         ></script>
       </head>
       <body className={font.className}>
-        <main className="flex flex-col items-center justify-center min-h-screen bg-slate-400 dark:bg-slate-600 transition-all duration-[350ms] ease-in-out">
-          <div className="min-w-[375px] w-[375px] bg-l-bg text-l-text dark:bg-d-bg dark:text-d-text">
+        <main className='flex flex-col items-center justify-center min-h-screen bg-slate-400 dark:bg-slate-600 transition-all duration-[350ms] ease-in-out'>
+          <div className='w-screen h-screen bg-l-bg text-l-text dark:bg-d-bg dark:text-d-text'>
+            <Header />
             {children}
           </div>
         </main>
